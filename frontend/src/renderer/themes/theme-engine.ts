@@ -376,7 +376,7 @@ function hexToRgb(hex: string): { r: number; g: number; b: number } | null {
 }
 
 function rgbToHex(r: number, g: number, b: number): string {
-  return '#' + [r, g, b].map((x) => Math.round(Math.min(255, Math.max(0, x))).toString(16).padStart(2, '0')).join('');
+  return `#${  [r, g, b].map((x) => Math.round(Math.min(255, Math.max(0, x))).toString(16).padStart(2, '0')).join('')}`;
 }
 
 function getLuminance(r: number, g: number, b: number): number {
@@ -408,7 +408,6 @@ function ensureContrast(accent: string, background: string, minRatio = 4.5): str
   const bgRgb = hexToRgb(background);
   if (!bgRgb) return accent;
 
-  const bgLum = getLuminance(bgRgb.r, bgRgb.g, bgRgb.b);
   let best = accent;
   let bestRatio = ratio;
 
@@ -426,7 +425,7 @@ function ensureContrast(accent: string, background: string, minRatio = 4.5): str
 
 export function customizeAccent(baseTheme: ThemeConfig, accentColor: string): ThemeConfig {
   const adjustedAccent = ensureContrast(accentColor, baseTheme.colors.background);
-  const adjustedAccentSubtle = accentColor + '1a';
+  const adjustedAccentSubtle = `${accentColor  }1a`;
 
   return {
     ...baseTheme,

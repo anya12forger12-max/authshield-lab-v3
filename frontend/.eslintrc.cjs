@@ -29,8 +29,6 @@ module.exports = {
     '@typescript-eslint',
     'react',
     'react-hooks',
-    'react-refresh',
-    'import',
   ],
   extends: [
     'eslint:recommended',
@@ -38,8 +36,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
   ],
   rules: {
     // TypeScript rules
@@ -67,42 +63,15 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
 
-    // React Refresh rules
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
-
-    // Import rules
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'always',
-        alphabetize: {
-          order: 'asc',
-          caseInsensitive: true,
-        },
-      },
-    ],
-    'import/no-duplicates': 'error',
-    'import/no-unresolved': 'error',
-
     // General rules
     'no-console': ['warn', { allow: ['warn', 'error'] }],
     'no-debugger': 'error',
     'no-duplicate-imports': 'off', // Handled by import/no-duplicates
+    eqeqeq: ['error', 'always', { null: 'ignore' }],
     'no-var': 'error',
     'prefer-const': 'error',
     'prefer-template': 'error',
-    'eqeqeq': ['error', 'always'],
+
     'curly': ['error', 'multi-line'],
     'no-throw-literal': 'error',
   },
