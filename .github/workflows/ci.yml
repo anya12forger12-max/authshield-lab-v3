@@ -34,7 +34,6 @@ jobs:
           cd backend
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-        continue-on-error: true
 
       - name: Run Python linting
         run: |
@@ -82,7 +81,6 @@ jobs:
           cd backend
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-        continue-on-error: true
 
       - name: Run Python type checking
         run: |
@@ -130,13 +128,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest pytest-cov
-        continue-on-error: true
 
+      # Hard gate on purpose: the suite is green today (909 passed), so a
+      # regression fails the build. Ruff/format/mypy below stay soft because they
+      # carry measured legacy debt (5323 ruff errors, 226 files unformatted) - recorded, not hidden.
       - name: Run Python tests
         run: |
           cd backend
           python -m pytest tests/ -v --cov=app --cov-report=xml --cov-report=html
-        continue-on-error: true
 
       - name: Upload Python coverage
         uses: actions/upload-artifact@v4
