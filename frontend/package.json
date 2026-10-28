@@ -55,5 +55,9 @@
     "vite": "^6.4.5",
     "vitest": "^4.1.12",
     "wait-on": "^7.2.0"
+  },
+  "overrides": {
+    "http-cache-semantics": "4.3.0",
+    "follow-redirects": "1.16.1"
   }
 }
